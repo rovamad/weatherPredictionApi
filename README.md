@@ -14,6 +14,11 @@ Para generar las clases debe ejecutarse el siguiente comando en la raiz del proy
 
 $ gradle xjc
 
+El IDE debe tener instalado Lombok y tener habilitado el procesador de anotaciones.
+
+* [Lombok for Eclipse](https://howtodoinjava.com/automation/lombok-eclipse-installation-examples/)
+* [Lombok for Intellij](https://www.baeldung.com/lombok-ide)
+
 Se adaptó el plugin JAXB2 para que funcione en Gradle, ya que está originalmente para Maven.
 
 Para hacer las desconversión de XML a Objetos en java, se usa un MarshallHelper.
