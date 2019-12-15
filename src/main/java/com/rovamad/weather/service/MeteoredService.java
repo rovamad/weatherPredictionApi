@@ -29,6 +29,8 @@ public class MeteoredService {
 
     public String getWeatherPrediction(String locationId) {
 
+        String error = null;
+
         if (GenericValidator.isInt(locationId) && !GenericValidator.isBlankOrNull(locationId)) {
 
             String incomingXMLResponse = callExternalService(locationId);
@@ -45,11 +47,14 @@ public class MeteoredService {
                     log.error(e.getMessage(), e);
                 }
             }
-            log.error("[getWeatherPrediction] - Something went wrong with the external service.");
+            error = "[getWeatherPrediction] - Something went wrong with the external service.";
+            log.error(error);
+        } else {
+            error = "[getWeatherPrediction] - Wrong format for Location ID, integer number is required.";
+            log.error(error);
         }
 
-        log.error("[getWeatherPrediction] - Wrong format for Location ID, integer number is required.");
-        return JSONHelper.errorMessage("[getWeatherPrediction] - Wrong format for Location ID, integer number is required.");
+        return JSONHelper.errorMessage(error);
     }
 
     String callExternalService(String locationId) {

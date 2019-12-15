@@ -34,4 +34,10 @@ public class MeteoredServiceTest {
 
         assertThat(service.getWeatherPrediction("18578")).isNotNull();
     }
+
+    @Test
+    public void getPredictionInLocationTest_ConditionalLocacationIdFail() {
+        assertThat(service.getWeatherPrediction("abc"))
+                .isEqualTo("{\"success\":false,\"message\":\"[getWeatherPrediction] - Wrong format for Location ID, integer number is required.\"}");
+    }
 }
